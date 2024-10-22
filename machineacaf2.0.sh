@@ -1,5 +1,16 @@
 #!/bin/bash
 
+echo
+"Menu :
+1. Expresso
+2. Café_Long
+3. The
+4. Chocolat
+5. Tasse
+6. MenuTech
+7. MenuStats
+8. Sortie"
+
 # Présentation du menu
 
 # Renseignez tasse sinon gobelet
