@@ -2,14 +2,16 @@
 
 # Présentation du menu
 
-#menu () {
+menu () {
 
 choice=0
+choice_sortie=0
 
-while [ $choice != 1 ] && [ $choice != 2 ] && [ $choice != 3 ] && [ $choice != 4 ] && [ $choice != 5 ] && [ $choice != 6 ] && [ $choice != 7 ]
+while [ $choice_sortie != 1 ]
 do
 
 echo "
+=============
 Menu : 
 1 Expresso
 2 Café Long
@@ -17,12 +19,12 @@ Menu :
 4 Chocolat
 5 MenuTech
 6 MenuStats
-7 Sortie"
+7 Sortie
+============="
 
 read choice
 
-# Renseigner tasse sinon gobelet
-
+# Renseigner type de paiement
 # Renseigner montant en fonction du choix
 # Prise en compte de la présence d'un gobelet, si oui, sa taille
 # Renseigner quantité de sucre si > 2 touillette
@@ -30,51 +32,51 @@ read choice
 case $choice in
 1)
 	echo "Choix Expresso"
-	taille_gobelet=Petit;;
+	taille_gobelet=petite;;
 
 2)
-	echo "Choix Cafe Long"
-	taille_gobelet=Grand;;
+	echo "Choix Café Long"
+	taille_gobelet=grande;;
 
 3)
-	echo "Choix The"
-	taille_gobelet=Grand;;
+	echo "Choix Thé"
+	taille_gobelet=grande;;
 
 4)
 	echo "Choix Chocolat"
-	taille_gobelet=Grand;;
-#5)
-#	echo "Choix MenuTech"
-#	taille_gobelet=2;;
+	taille_gobelet=grande;;
+5)
+	echo "Choix MenuTech";;
 
-#6)
-#	echo "Choix MenuStats";;
+6)
+	echo "Choix MenuStats";;
 
 7)
-	echo "Sortie du menu.";;
+	echo "Sortie du menu."
+	choice_sortie=1;;
 
 *)
- 	echo "Le choix n'est pas bon.";;
-#  	menu;;
+ 	echo "Le choix n'est pas bon."
+  	menu;;
 esac
 
-echo "$choice choisit"
+# Choix gobelet oui ou non (à mettre dans chaque choix de boisson)
 
 read -p "Besoin d'un gobelet ? (oui(1) / non(2))" gobelet
 
 if [ $gobelet = 1 ]
 then
-	echo "Pas besoin de gobelet"
+	echo "Un gobelet sera servi"
+	echo "Service de la boisson dans un Gobelet $taille_gobelet taille"
 else
-	echo "Besoin de gobelet"
+	echo "Pas de gobelet servi"
+	echo "Service de la boisson dans la tasse"
+fi
 
 
-#$taille_gobelet choisit
-#, $quantitesucre choisit, $monnaie rendue"
-
-
+#$quantitesucre choisit, $monnaie rendue"
 
 done
 
-#}
-#menu
+}
+menu
