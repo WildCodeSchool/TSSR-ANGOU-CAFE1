@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Présentation du menu
+
 echo
 "Menu :
 1. Expresso
@@ -11,7 +13,54 @@ echo
 7. MenuStats
 8. Sortie"
 
-# Présentation du menu
+menu () {
+
+read choice
+
+if [ $choice = 5 ]
+then
+else
+fi
+
+case $choice in
+1)
+  echo "Choix Expresso"
+
+2)
+  echo "Choix Cafe Long"
+
+3)
+  echo "Choix The"
+
+4)
+  echo "Choix Chocolat"
+
+5)
+  echo "Choix Tasse"
+
+6)
+  echo "Choix MenuTech
+
+7)
+  echo "Choix MenuStats"
+
+8)
+  echo "Sortie du menu."
+
+*)
+  echo "Le choix n'est pas bon."
+  menu
+esac
+
+}
+menu
+
+if [ $choice = 1 ]
+then
+else
+fi
+
+
 
 # Renseignez tasse sinon gobelet
 
