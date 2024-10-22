@@ -1,0 +1,93 @@
+#!/bin/bash
+
+# Initialistion de la machine ; Propositions des différents choix possibles ;  Vérification de la condition (valide ou non)
+
+choix=0
+
+while [ $choix != "x" ] && [ $choix != "1" ] && [ $choix != "2" ] && [ $choix != "3" ]
+do
+        echo "Menu : Café (1), Chocolat (2), Thé (3), x pour annuler"
+        read -p "Indiquez votre choix :" choix
+done
+
+# La machine indique ce qu elle sert ou que le choix est invalide ; Propose de boire un autre boisson jusqu à ce que l utilisateur tape x
+
+valeur1=Café
+valeur2=Chocolat
+valeur3=Thé
+
+if [ $choix = "1" ] 
+then
+        echo "$valeur1 sélectionné"
+fi
+
+if [ $choix = "2" ]
+then
+        echo "$valeur2 sélectionné"
+fi
+
+if [ $choix = "3" ]
+then
+        echo "$valeur3 sélectonné"
+fi
+
+if [ $choix = "x" ]
+then 
+        echo "Opération annulée"
+fi
+
+argent=0
+reste=1
+
+if [ $choix = "1" ]
+then
+        while [ $reste != 0 ]
+        do
+                while [ $argent -lt 1 ]
+                do
+                echo "Veuillez régler 1 €"
+                read argent
+                done
+
+                echo "$argent € inséré."
+                let argent=$argent-1
+                let reste=$reste-1
+                echo "Rendu $argent €"
+        done
+fi
+
+if [ $choix = "2" ]
+then
+        while [ $reste != 0 ]
+        do
+                while [ $argent -lt 3 ]
+                do
+                echo "Veuillez régler 3 €"
+                read argent
+                done
+
+                echo "$argent € inséré."
+                let argent=$argent-3
+                let reste=$reste-1
+                echo "Rendu $argent €"
+        done
+fi
+
+if [ $choix = "3" ]
+then
+        while [ $reste != 0 ]
+        do
+                while [ $argent -lt 2 ]
+                do
+                echo "Veuillez régler 2 €"
+                read argent
+                done
+
+                echo "$argent € inséré."
+                let argent=$argent-2
+                let reste=$reste-1
+                echo "Rendu $argent €"
+        done
+fi
+
+echo "A bientôt."
