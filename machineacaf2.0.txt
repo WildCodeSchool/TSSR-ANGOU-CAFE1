@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Présentation du menu
-
+# Définir le choix de boisson
 menu () {
 
 choice=0
@@ -24,6 +24,7 @@ Menu :
 
 read choice
 
+
 # Renseigner type de paiement
 # Renseigner montant en fonction du choix
 # Prise en compte de la présence d'un gobelet, si oui, sa taille
@@ -31,28 +32,63 @@ read choice
 
 case $choice in
 1)
-	echo "Choix Expresso"
-	taille_gobelet=petite;;
+	echo "Choix : Expresso"
+	taille_gobelet=petite
+	read -p "Besoin d'un gobelet ? (oui(o) / non(n))" gobelet
+	if [ $gobelet = o ]
+	then
+		echo "Un gobelet sera servi"
+		echo "Service de la boisson dans un gobelet $taille_gobelet taille."
+	else
+		echo "Pas de gobelet servi"
+		echo "Service de la boisson dans la tasse."
+	fi;;
 
 2)
-	echo "Choix Café Long"
-	taille_gobelet=grande;;
-
+	echo "Choix : Café Long"
+	taille_gobelet=grande
+	read -p "Besoin d'un gobelet ? (oui(o) / non(n))" gobelet
+	if [ $gobelet = o ]
+	then
+		echo "Un gobelet sera servi"
+		echo "Service de la boisson dans un gobelet $taille_gobelet taille."
+	else
+		echo "Pas de gobelet servi"
+		echo "Service de la boisson dans la tasse."
+	fi;;
 3)
-	echo "Choix Thé"
-	taille_gobelet=grande;;
+	echo "Choix : Thé"
+	taille_gobelet=grande
+	read -p "Besoin d'un gobelet ? (oui(o) / non(n))" gobelet
+	if [ $gobelet = o ]
+	then
+		echo "Un gobelet sera servi"
+		echo "Service de la boisson dans un gobelet $taille_gobelet taille."
+	else
+		echo "Pas de gobelet servi"
+		echo "Service de la boisson dans la tasse."
+	fi;;
 
 4)
-	echo "Choix Chocolat"
-	taille_gobelet=grande;;
+	echo "Choix : Chocolat"
+	taille_gobelet=grande
+	read -p "Besoin d'un gobelet ? (oui(o) / non(n))" gobelet
+	if [ $gobelet = o ]
+	then
+		echo "Un gobelet sera servi"
+		echo "Service de la boisson dans un gobelet $taille_gobelet taille."
+	else
+		echo "Pas de gobelet servi"
+		echo "Service de la boisson dans la tasse."
+	fi;;
 5)
-	echo "Choix MenuTech";;
+	echo "Choix : MenuTech";;
 
 6)
-	echo "Choix MenuStats";;
+	echo "Choix : MenuStats";;
 
 7)
-	echo "Sortie du menu."
+	echo "Sortie du menu. A bientôt !"
 	choice_sortie=1;;
 
 *)
@@ -60,21 +96,7 @@ case $choice in
   	menu;;
 esac
 
-# Choix gobelet oui ou non (à mettre dans chaque choix de boisson)
-
-read -p "Besoin d'un gobelet ? (oui(1) / non(2))" gobelet
-
-if [ $gobelet = 1 ]
-then
-	echo "Un gobelet sera servi"
-	echo "Service de la boisson dans un Gobelet $taille_gobelet taille"
-else
-	echo "Pas de gobelet servi"
-	echo "Service de la boisson dans la tasse"
-fi
-
-
-#$quantitesucre choisit, $monnaie rendue"
+#quantitesucre choisit,monnaie rendue"
 
 done
 
