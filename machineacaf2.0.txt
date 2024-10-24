@@ -1,104 +1,157 @@
 #!/bin/bash
 
-# Présentation du menu
-# Définir le choix de boisson
-menu () {
+# Initialisation des variables
 
 choice=0
 choice_sortie=0
+prix_boisson=0
+type_paiement=0
+argent=5
+rendu=0
 
-while [ $choice_sortie != 1 ]
-do
+read -p "1)CB 2)monnaie 3)sortie ?" type_paiement
+echo "Vous avez sélectionné" $type_paiement
 
-echo "
-=============
-Menu : 
-1 Expresso
-2 Café Long
-3 Thé
-4 Chocolat
-5 MenuTech
-6 MenuStats
-7 Sortie
-============="
+if [ $type_paiement = "1" ]
+then
+	echo "Paiement par CB"
+	echo "Vous avez un crédit de " $argent "€ (prédébit CB)"
+fi
 
-read choice
+if [ $type_paiement = "2" ]
+then
+	echo "Paiement par monnaie"
+	read -p "Combien voulez-vous mettre de monnaie (chiffre en €) ? " argent
+	echo "Vous avez un Crédit de" $argent "€" 
+fi
 
+if [ $type_paiement = "3" ]
+then 
+	echo "Sortie sélectionnée"
+	echo "A bientôt !"
+	exit
+fi
 
-# Renseigner type de paiement
-# Renseigner montant en fonction du choix
+menu()
+{
+
+	while [ $choice_sortie != "1" ]
+	do
+
+# Présentation du menu
+
+	echo "
+	=============
+	Menu :
+	1 Expresso
+	2 Café Long
+	3 Thé
+	4 Chocolat
+	5 MenuTech
+	6 MenuStats
+	7 Sortie
+	============="
+
+	read choice
+
 # Prise en compte de la présence d'un gobelet, si oui, sa taille
 # Renseigner quantité de sucre si > 2 touillette
 
-case $choice in
-1)
-	echo "Choix : Expresso"
-	taille_gobelet=petite
-	read -p "Besoin d'un gobelet ? (oui(o) / non(n))" gobelet
-	if [ $gobelet = o ]
-	then
-		echo "Un gobelet sera servi"
-		echo "Service de la boisson dans un gobelet $taille_gobelet taille."
-	else
-		echo "Pas de gobelet servi"
-		echo "Service de la boisson dans la tasse."
-	fi;;
+	case $choice in
+	1)
+		echo "Choix : Expresso"
+		taille_gobelet=petite
+		prix_boisson=1
+		read -p "Besoin d'un gobelet ? (oui(o) / non(n))" gobelet
+		if [ $gobelet = "o" ]
+		then
+			echo "Un gobelet sera servi"
+			echo "Service de la boisson dans un gobelet $taille_gobelet taille."
+		else
+			echo "Pas de gobelet servi"
+			echo "Service de la boisson dans la tasse."
+		fi;;
 
-2)
-	echo "Choix : Café Long"
-	taille_gobelet=grande
-	read -p "Besoin d'un gobelet ? (oui(o) / non(n))" gobelet
-	if [ $gobelet = o ]
-	then
-		echo "Un gobelet sera servi"
-		echo "Service de la boisson dans un gobelet $taille_gobelet taille."
-	else
-		echo "Pas de gobelet servi"
-		echo "Service de la boisson dans la tasse."
-	fi;;
-3)
-	echo "Choix : Thé"
-	taille_gobelet=grande
-	read -p "Besoin d'un gobelet ? (oui(o) / non(n))" gobelet
-	if [ $gobelet = o ]
-	then
-		echo "Un gobelet sera servi"
-		echo "Service de la boisson dans un gobelet $taille_gobelet taille."
-	else
-		echo "Pas de gobelet servi"
-		echo "Service de la boisson dans la tasse."
-	fi;;
+	2)
+		echo "Choix : Café Long"
+		taille_gobelet=grande
+		prix_boisson=1
+		read -p "Besoin d'un gobelet ? (oui(o) / non(n))" gobelet
+		if [ $gobelet = "o" ]
+		then
+			echo "Un gobelet sera servi"
+			echo "Service de la boisson dans un gobelet $taille_gobelet taille."
+		else
+			echo "Pas de gobelet servi"
+			echo "Service de la boisson dans la tasse."
+		fi;;
+	3)
+		echo "Choix : Thé"
+		taille_gobelet=grande
+		prix_boisson=1
+		read -p "Besoin d'un gobelet ? (oui(o) / non(n))" gobelet
+		if [ $gobelet = "o" ]
+		then
+			echo "Un gobelet sera servi"
+			echo "Service de la boisson dans un gobelet $taille_gobelet taille."
+		else
+			echo "Pas de gobelet servi"
+			echo "Service de la boisson dans la tasse."
+		fi;;
 
-4)
-	echo "Choix : Chocolat"
-	taille_gobelet=grande
-	read -p "Besoin d'un gobelet ? (oui(o) / non(n))" gobelet
-	if [ $gobelet = o ]
-	then
-		echo "Un gobelet sera servi"
-		echo "Service de la boisson dans un gobelet $taille_gobelet taille."
-	else
-		echo "Pas de gobelet servi"
-		echo "Service de la boisson dans la tasse."
-	fi;;
-5)
-	echo "Choix : MenuTech";;
+	4)
+		echo "Choix : Chocolat"
+		taille_gobelet=grande
+		prix_boisson=1
+		read -p "Besoin d'un gobelet ? (oui(o) / non(n))" gobelet
+		if [ $gobelet = "o" ]
+		then
+			echo "Un gobelet sera servi"
+			echo "Service de la boisson dans un gobelet $taille_gobelet taille."
+		else
+			echo "Pas de gobelet servi"
+			echo "Service de la boisson dans la tasse."
+		fi;;
 
-6)
-	echo "Choix : MenuStats";;
+	5)
+		echo "Choix : MenuTech";;
 
-7)
-	echo "Sortie du menu. A bientôt !"
-	choice_sortie=1;;
+	6)
+		echo "Choix : MenuStats";;
 
-*)
- 	echo "Le choix n'est pas bon."
-  	menu;;
-esac
+	7)
+		echo "Sortie du menu. A bientôt !"
+		choice_sortie=1;;
 
-#quantitesucre choisit,monnaie rendue"
+	*)
+ 		echo "Le choix n'est pas bon."
+  		menu;;
 
-done
+	esac
+
+	done
 
 }
+
+rendu()
+{
+	if [ $type_paiement = "2" ]
+	then
+		argent=$(($argent-$rendu))
+		rendu=$(($argent-$prix_boisson))
+		echo "Rendu monnaie : $rendu €."
+	else
+		argent=$(($argent-$rendu))
+		rendu=$(($argent-$prix_boisson))
+		echo "Crédit restant : $rendu €."
+	fi
+}
+
+if [ $prix_boisson -gt $argent ]
+then
+	echo "Solde insuffisant"
+else
+	rendu
+fi
+
 menu
