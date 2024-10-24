@@ -3,13 +3,13 @@
 
 Choix du moyen de paiement : OK  
 Mise en place d'une tasse ou non : OK  
-Choix de la quantité de sucre : NON  
-Demande pour la touillette : NON  
+Choix de la quantité de sucre : OUI  
+Demande pour la touillette : NON mais si sucre > 2 touillette  
 Choix de la boisson chaude : Toutes chaudes  
 Vérification de la présence d'une tasse : NON ; Mise en place d'un gobelet : Oui (2 tailles)  
 Réalisation de la boisson chaude : ??  
-Ajout du sucre ou non : NON  
-Ajout de la touillette : NON  
+Ajout du sucre ou non : OUI  
+Ajout de la touillette : OUI  
 Demande à l'utilisateur s'il souhaite une autre boisson chaude : OK/NON  
 Rendu monnaie à la fin : NON  
 
