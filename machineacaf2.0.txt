@@ -131,8 +131,6 @@ menu()
 
 	done
 
-}
-
 rendu()
 {
 	if [ $type_paiement = "2" ]
@@ -140,10 +138,12 @@ rendu()
 		argent=$(($argent-$rendu))
 		rendu=$(($argent-$prix_boisson))
 		echo "Rendu monnaie : $rendu €."
+		echo "$rendu" > creditrestant.txt
 	else
 		argent=$(($argent-$rendu))
 		rendu=$(($argent-$prix_boisson))
-		echo "Crédit restant : $rendu €."
+		echo "Crédit restant : $rendu €." 
+		echo "$rendu" > creditrestant.txt
 	fi
 }
 
@@ -152,6 +152,11 @@ then
 	echo "Solde insuffisant"
 else
 	rendu
+	
 fi
 
+cat creditrestant.txt > credit
+rendu=credit
+
+}
 menu
