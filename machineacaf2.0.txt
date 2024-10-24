@@ -131,6 +131,61 @@ menu()
 
 	done
 
+sucre()
+{
+read -p "voulez-vous du sucre ? (Oui/Non) :" reponse
+
+if [ $reponse = Oui ]
+then
+        read -p "Quelle quantité de sucre voulez-vous de 1 à 5 : " sucre_rep
+
+                case $sucre_rep in
+
+                1)
+
+                        echo "Vous avez une dose de sucre"
+                        ;;
+                2)
+
+                        echo "Vous avez deux dose de sucre"
+                        ;;
+                3)
+
+                        echo "Vous avez trois dose de sucre"
+                        ;;
+                4)
+
+                        echo "Vous avez quatre dose de sucre"
+                        ;;
+                5)
+
+                        echo "Vous avez cinq dose de sucre"
+                        ;;
+
+                esac
+else
+
+
+        echo " Vous ne voulez pas de sucre "
+
+fi
+
+if [ $sucre_rep > 2 ]
+then
+
+        echo " Vous avec une touiellte ! "
+
+else
+
+        echo " Vous n'avez de touiellte !"
+fi
+
+
+
+}
+
+
+
 rendu()
 {
 	if [ $type_paiement = "2" ]
